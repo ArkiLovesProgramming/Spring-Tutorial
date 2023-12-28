@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    需要加上p:属性可用的标识-->
+    <!--    xmlns:p="http://www.springframework.org/schema/p"-->
+    <!--    如果pojo类中没有set方法，则p:属性会报错（非常智能-->
+    <!--    如果要ref的话，在字段名后加-ref-->
+    <bean name="user" class="com.arki.pojo.User" p:age="1" p:name="arki" p:address-ref="address" />
+
+    <bean name="address" class="com.arki.pojo.Address" p:address="45 aldershot st"/>
+
+</beans>

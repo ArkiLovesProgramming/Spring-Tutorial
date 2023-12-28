@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <package name="com.arki.pojo"/>
+    </typeAliases>
+    <!--    environment给spring配置-->
+    <!--    这里mapper，mybatis自己注册-->
+    <mappers>
+        <mapper resource="com/arki/dao/UserMapper.xml"/>
+    </mappers>
+</configuration>

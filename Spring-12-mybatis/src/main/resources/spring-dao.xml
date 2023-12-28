@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--引入外部配置文件-->
+    <context:property-placeholder location="classpath:db.properties" />
+    <!--
+    DataSource：使用Spring的数据源替换Mybatis的environments配置 c3p0 dbcp druid
+    我们这里使用Spring提供的JDBC
+    -->
+    <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+    </bean>
+
+    <!-- sqLSessionFactory把写在mybatis工具类中的生成session也放到spring中，唯一就是多了一个实现类有点麻烦
+    -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--  绑定Mybatis配置文件 -->
+        <!--  以下共同组成原来的mybatis配置文件-->
+        <property name="dataSource" ref="datasource"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath:com/arki/dao/*.xml"/>
+    </bean>
+
+    <!--  SqLSessionTempLate:就是我们使用的sqLSession（线程安全的  -->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+
+    <bean id="userMapper" class="com.arki.dao.UserMapperImpl">
+        <property name="session" ref="sqlSession"/>
+    </bean>
+
+    <bean id="userMapper2" class="com.arki.dao.UserMapperImpl2">
+<!--        可以注入SqlSessionTemplate也可以直接sqlSessionFactory-->
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+
+
+</beans>

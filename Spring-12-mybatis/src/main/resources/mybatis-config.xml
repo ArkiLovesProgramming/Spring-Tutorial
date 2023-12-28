@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--    <properties resource="db.properties"/>-->
+    <typeAliases>
+        <package name="com.arki.pojo"/>
+    </typeAliases>
+<!--    <environments default="development">-->
+<!--        <environment id="development">-->
+<!--            <transactionManager type="JDBC"/>-->
+<!--            <dataSource type="POOLED">-->
+<!--                <property name="driver" value="${driver}"/>-->
+<!--                <property name="url" value="${url}"/>-->
+<!--                <property name="username" value="${username}"/>-->
+<!--                <property name="password" value="${password}"/>-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+<!--    </environments>-->
+    <mappers>
+<!--        遇到了一个大大的bug，如果由spring接管mybatis时，在spring的SqlSessionFactoryBean的bean下填写了-->
+<!--        <property name="mapperLocations" value="classpath:com/arki/dao/*.xml"/>去注册mapper, 那么
+            在mybatis中就不能再次注册-->
+<!--        <mapper resource="com/arki/dao/UserMapper.xml"/>-->
+    </mappers>
+</configuration>

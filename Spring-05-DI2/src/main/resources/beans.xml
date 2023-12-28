@@ -1,0 +1,58 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="com.arki.pojo.Address">
+        <property name="address" value="1452 brenton st"/>
+    </bean>
+
+    <bean id="student" class="com.arki.pojo.Student">
+        <!--第一种，普通值注入，value。也可以通过写""来注入空字符串-->
+        <property name="name" value="arki"/>
+        <!--第二种,Bean注入，ref-->
+        <property name="address" ref="address"/>
+        <!--第三种，数组注入-->
+        <property name="books">
+            <array>
+                <value>harry porter</value>
+                <value>who remove my cheese</value>
+                <value>balaclava</value>
+            </array>
+        </property>
+        <!--第四种，list注入-->
+        <property name="hobbys">
+            <list>
+                <value>女孩</value>
+                <value>小猫</value>
+                <value>睡觉</value>
+            </list>
+        </property>
+        <!--第五种，map注入-->
+        <property name="card">
+            <map>
+                <entry key="id" value="1234567"/>
+                <entry key="bank" value="2355322424"/>
+            </map>
+        </property>
+        <!--第六种，Set注入-->
+        <property name="games">
+            <set>
+                <value>lol</value>
+                <value>cs</value>
+            </set>
+        </property>
+        <!--第七种，null注入-->
+        <property name="wife">
+            <null/>
+        </property>
+        <!--第八种，properties注入-->
+        <property name="info">
+            <props>
+                <prop key="username">arki</prop>
+                <prop key="password">12345678</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>

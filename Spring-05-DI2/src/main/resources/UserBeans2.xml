@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    测试用c:属性标签-->
+    <!--    需要加上c:属性可用的标识-->
+    <!--    xmlns:c="http://www.springframework.org/schema/c""-->
+    <!--    如果pojo类中没有有参构造，则c:属性会报错（非常智能-->
+    <!--    如果要ref的话，在字段名后加-ref-->
+    <bean id="user" class="com.arki.pojo.User" c:age="1" c:name="arki" c:address-ref="address"/>
+
+    <bean id="address" class="com.arki.pojo.Address" c:address="1452 brenton st"/>
+</beans>

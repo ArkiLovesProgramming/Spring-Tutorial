@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="cat" class="com.arki.pojo.Cat"/>
+    <bean id="dog" class="com.arki.pojo.Dog"/>
+
+    <!--
+        byName：会自动在容器上下文中查询，和自己对象set方法参数名字对应的bean id
+        byType：会自动在容器上下文中查询，和自己对象类型相同的bean, 如果上下文中对应类有多个bean，则会报错
+    -->
+    <bean id="person" class="com.arki.pojo.Person" autowire="byType">
+        <property name="name" value="arki"/>
+    </bean>
+
+</beans>
